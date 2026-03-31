@@ -1,0 +1,8 @@
+# Who is logged in right now?
+w
+
+# Who logged in recently?
+last -n 10
+
+# Who failed to log in? (Brute-force check)
+sudo lastb -n 10

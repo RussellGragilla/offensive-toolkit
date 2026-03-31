@@ -1,0 +1,13 @@
+sudo visudo
+
+# 1. Passwordless Sudo (Use with caution, good for scripts/automation)
+# User 'deploy' can run any command without password
+deploy ALL=(ALL) NOPASSWD: ALL
+
+# 2. Command Restriction (Least Privilege)
+# User 'junior' can ONLY restart Nginx, nothing else
+junior ALL=(ALL) /usr/bin/systemctl restart nginx
+
+# 3. Group Privileges
+# Members of 'sysadmin' group have full access
+%sysadmin ALL=(ALL) ALL

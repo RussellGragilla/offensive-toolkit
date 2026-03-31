@@ -1,0 +1,8 @@
+# Grant 'rwx' strictly to user 'john' on a specific file,
+# regardless of who owns it.
+setfacl -m u:john:rwx /var/www/html/index.php
+
+# Remove ACL
+setfacl -x u:john /var/www/html/index.php
+# View ACLs
+getfacl /var/www/html/index.php

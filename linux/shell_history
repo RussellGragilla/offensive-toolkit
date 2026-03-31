@@ -1,0 +1,8 @@
+# Clear current session history
+history -c
+
+# Clear history file permanently
+cat /dev/null > ~/.bash_history
+
+# Prevent history logging for current session
+export HISTSIZE=0

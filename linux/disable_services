@@ -1,0 +1,6 @@
+# List all enabled services
+systemctl list-unit-files --state=enabled
+
+# Stop and disable a service (e.g., postfix if not needed)
+sudo systemctl stop postfix
+sudo systemctl disable postfix

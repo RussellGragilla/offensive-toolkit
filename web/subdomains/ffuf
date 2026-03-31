@@ -1,0 +1,4 @@
+ffuf -w subdomains-top1million-110000.txt \
+     -u https://FUZZ.target.com \
+     -mc 200,301,302,403 \
+     -t 100

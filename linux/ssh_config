@@ -1,0 +1,13 @@
+# Open config
+sudo nano /etc/ssh/sshd_config
+
+# Key Configuration Changes:
+Port 2222                   # Change default port (Security through obscurity)
+PermitRootLogin no          # The most important line!
+PasswordAuthentication no   # Disable if using SSH Keys (Recommended)
+PermitEmptyPasswords no     # Never allow empty passwords
+MaxAuthTries 3              # Disconnect after 3 failed attempts
+LoginGraceTime 60           # Disconnect if login takes > 60 secs
+
+# Restart SSH to apply
+sudo systemctl restart sshd

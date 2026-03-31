@@ -1,0 +1,5 @@
+gobuster dir \
+  -u https://target.com \
+  -w raft-large-directories.txt \
+  -x php,html,bak,old,txt \
+  --timeout 10s

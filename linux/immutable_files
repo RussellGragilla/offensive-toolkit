@@ -1,0 +1,12 @@
+# Lock the file (Immutable bit)
+sudo chattr +i /etc/passwd
+sudo chattr +i /etc/shadow
+
+# Verify attributes (Look for 'i')
+lsattr /etc/passwd
+
+# Try to delete it (Will fail: Operation not permitted)
+rm /etc/passwd
+
+# Unlock the file (To make edits)
+sudo chattr -i /etc/passwd

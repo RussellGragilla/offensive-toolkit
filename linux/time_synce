@@ -1,0 +1,5 @@
+# Enable NTP synchronization
+sudo timedatectl set-ntp on
+
+# Check status
+timedatectl status

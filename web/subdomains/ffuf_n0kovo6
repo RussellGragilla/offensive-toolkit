@@ -1,0 +1,8 @@
+# GitHub: n0kovo/n0kovo_subdomains
+
+ffuf -w n0kovo_subdomains.txt \
+     -u https://FUZZ.target.com \
+     -mc all \
+     -fc 400,404 \
+     -t 200 \
+     -o results.json

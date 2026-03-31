@@ -1,0 +1,9 @@
+# Create user 'oz' with a home directory and bash shell
+sudo useradd -m -s /bin/bash oz
+
+# Set a strong password
+sudo passwd oz
+
+# Grant Sudo privileges
+# Debian/Ubuntu:
+sudo usermod -aG sudo oz

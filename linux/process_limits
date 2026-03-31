@@ -1,0 +1,10 @@
+#Prevent DoS
+
+# nano /etc/security/limits.conf
+
+# User 'oz' can only have 50 processes
+oz hard nproc 50
+
+# Increase open file limit for database user
+postgres soft nofile 4096
+postgres hard nofile 10240

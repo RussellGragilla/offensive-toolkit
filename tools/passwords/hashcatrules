@@ -1,0 +1,2 @@
+hashcat -m 1000 -a 0 hashes.txt rockyou.txt \
+  -r /usr/share/hashcat/rules/best64.rule

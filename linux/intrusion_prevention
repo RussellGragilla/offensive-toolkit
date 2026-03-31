@@ -1,0 +1,21 @@
+#Automatically ban IPs that show malicious behavior (brute-fore)
+
+# Install
+sudo dnf install fail2ban -y
+
+# Create a local config (Never edit jail.conf directly)
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+sudo nano /etc/fail2ban/jail.local
+
+# Key jail.local Settings
+[sshd]
+enabled = true
+port    = ssh (or your custom port 2222)
+logpath = %(sshd_log)s
+backend = %(sshd_backend)s
+maxretry = 3
+bantime = 1h
+
+# Restart and Check Status
+sudo systemctl restart fail2ban
+sudo fail2ban-client status sshd

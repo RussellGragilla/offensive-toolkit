@@ -1,0 +1,10 @@
+#1. Always deduplicate before running:
+sort -u wordlist.txt -o wordlist.txt
+
+#2. Combine lists intelligently:
+cat raft-large-directories.txt custom_target.txt | sort -u > combined.txt
+
+#3. Use appropriate thread counts: Web servers can rate-limit or block aggressive scanning. Start with 50 threads and adjust based on response times.
+
+#4. Keep SecLists updated:
+cd /opt/SecLists && git pull

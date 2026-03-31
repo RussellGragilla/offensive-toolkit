@@ -1,0 +1,8 @@
+# Real-time monitoring of Auth logs
+tail -f /var/log/auth.log
+
+# Journalctl: Show logs for SSH service only
+journalctl -u sshd --since "1 hour ago"
+
+# Journalctl: Show only Critical and Error messages
+journalctl -p err -b

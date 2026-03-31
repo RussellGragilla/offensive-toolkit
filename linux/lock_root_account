@@ -1,0 +1,5 @@
+# Lock the root account (disables password login)
+sudo passwd -l root
+
+# (Optional) To unlock if absolutely necessary:
+# sudo passwd -u root

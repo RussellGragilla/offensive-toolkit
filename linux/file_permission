@@ -1,0 +1,8 @@
+# 755: Owner(RWX), Group(R-X), Others(R-X) -> Directories/Scripts
+chmod 755 script.sh
+
+# 644: Owner(RW), Group(R), Others(R) -> Config files
+chmod 644 config.yaml
+
+# 600: Owner(RW), Others(None) -> Private Keys (CRITICAL)
+chmod 600 id_rsa

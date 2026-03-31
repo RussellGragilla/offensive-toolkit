@@ -1,0 +1,8 @@
+# In /etc/ssh/sshd_config
+PasswordAuthentication no
+PubkeyAuthentication yes
+ChallengeResponseAuthentication no
+
+# Google Authenticator
+sudo dnf install libpam-google-authenticator
+google-authenticator  # Follow on-screen setup

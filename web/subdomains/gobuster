@@ -1,0 +1,5 @@
+gobuster dns \
+  -d target.com \
+  -w subdomains-top1million-110000.txt \
+  -t 50 \
+  --wildcard

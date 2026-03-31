@@ -1,0 +1,7 @@
+# Edit the banner file
+sudo nano /etc/issue.net
+
+# Enable Banner in SSH config
+sudo nano /etc/ssh/sshd_config
+# Add/Uncomment:
+Banner /etc/issue.net

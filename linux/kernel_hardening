@@ -1,0 +1,15 @@
+sudo nano /etc/sysctl.conf
+
+# Disable IP Packet Forwarding (If not a router)
+net.ipv4.ip_forward = 0
+
+# Ignore ICMP Echo Requests (Disable Ping response - Stealth Mode)
+net.ipv4.icmp_echo_ignore_all = 1
+# Protect against IP Spoofing
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.default.rp_filter = 1
+# Disable IPv6 (If not used)
+net.ipv6.conf.all.disable_ipv6 = 1
+
+# Apply changes immediately
+sudo sysctl -p

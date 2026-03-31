@@ -1,0 +1,3 @@
+hashcat -m 1000 -a 0 hashes.txt crackstation.txt \
+  --potfile-path crackstation.pot \
+  -O --status

@@ -1,0 +1,3 @@
+ffuf -w versions.txt:V -w api-endpoints.txt:E \
+     -u https://target.com/V/E \
+     -mc 200,401,403

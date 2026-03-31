@@ -1,0 +1,4 @@
+ffuf -w /opt/SecLists/Discovery/Web-Content/raft-large-directories.txt \
+     -u https://target.com/FUZZ \
+     -fc 404,403 \
+     -t 50

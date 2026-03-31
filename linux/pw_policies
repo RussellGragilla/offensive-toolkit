@@ -1,0 +1,8 @@
+# Check current password aging for user 'oz'
+sudo chage -l oz
+
+# Force password change every 90 days
+sudo chage -M 90 oz
+
+# Lock account after 30 days of inactivity
+sudo chage -I 30 oz

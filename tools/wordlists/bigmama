@@ -1,0 +1,6 @@
+git clone https://github.com/six2dez/OneListForAll
+ffuf -w OneListForAll/onelistforall.txt \
+     -u https://target.com/FUZZ \
+     -mc 200,204,301,302,401,403 \
+     -t 50 \
+     -o output.json

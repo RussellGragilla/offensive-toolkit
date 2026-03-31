@@ -1,0 +1,5 @@
+ffuf -w api-endpoints.txt \
+     -u https://target.com/api/FUZZ \
+     -mc 200,201,204,400,401,403 \
+     -H "Content-Type: application/json" \
+     -t 40

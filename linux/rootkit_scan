@@ -1,0 +1,8 @@
+# Install RKHunter
+sudo dnf install rkhunter -y
+
+# Update database
+sudo rkhunter --propupd
+
+# Run check
+sudo rkhunter --check

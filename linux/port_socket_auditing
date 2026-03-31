@@ -1,0 +1,8 @@
+# Show all listening ports (TCP/UDP) with Process ID (PID)
+sudo ss -tulpn
+
+# Who is holding port 8080?
+sudo lsof -i :8080
+
+# Monitor network bandwidth per process
+sudo nethogs eth0

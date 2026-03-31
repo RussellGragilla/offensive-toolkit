@@ -1,0 +1,9 @@
+# Generate wordlist from target (min 6 chars, depth 3, with emails)
+cewl -d 3 -m 6 --email https://target.com -w custom_target.txt
+
+# Combine with rockyou for password attacks
+cat custom_target.txt rockyou.txt | sort -u > combined.txt
+# Use for directory fuzzing
+ffuf -w custom_target.txt \
+     -u https://target.com/FUZZ \
+     -mc 200,301,302

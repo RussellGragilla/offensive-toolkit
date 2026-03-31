@@ -1,0 +1,7 @@
+# List current user's cron
+crontab -l
+
+# Check system-wide crons (Inspect these folders!)
+ls -la /etc/cron.daily/
+ls -la /etc/cron.hourly/
+cat /etc/crontab
