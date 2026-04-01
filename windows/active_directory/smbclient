@@ -1,0 +1,5 @@
+# List shares on a host
+smbclient -L //10.10.10.5 -N
+ 
+# Connect to a specific share
+smbclient //10.10.10.5/public -U guest

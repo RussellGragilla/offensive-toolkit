@@ -1,0 +1,5 @@
+# Null session authentication
+rpcclient -U "" 10.10.10.5
+ 
+# Once inside, enumerate shares
+rpcclient $> enumshares

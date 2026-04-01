@@ -1,0 +1,2 @@
+# Enumerate SMB shares
+enum4linux-ng -S 10.10.10.5

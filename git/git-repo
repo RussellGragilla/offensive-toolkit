@@ -1,0 +1,54 @@
+# Make local Git directory
+mkdir ~/offensive-toolkit
+cd ~/offensive-toolkit
+git init
+
+# Make file hierarchy that Git Repo will inherit
+mkdir recon web privesc shells windows linux notes payloads tools
+touch README.md
+
+# Populate README.md
+
+============================================================================================
+# Offensive Security Toolkit
+
+#Personal toolkit and notes developed through hands-on labs (HackTheBox, TryHackMe, etc.)
+
+## Structure
+
+#- recon/        → Enumeration techniques and commands
+#- web/          → Web exploitation notes & payloads
+#- privesc/      → Privilege escalation techniques
+#- shells/       → Reverse shells & upgrades
+#- windows/      → Windows-specific techniques
+#- linux/        → Linux-specific techniques
+#- payloads/     → Custom payloads
+#- tools/        → Custom scripts
+#- notes/        → General notes & findings
+
+## Philosophy
+
+#This repository is built for:
+#- Repeatability
+#- Understanding (not just copy/paste)
+#- Real-world application
+=============================================================================================
+
+
+# Connect to GitHub
+git remote add origin https://github.com/RussellGragilla/offensive-toolkit.git
+git branch -M main
+git add .
+git commit -m "Initial structure"
+git push -u origin main
+
+# Push additional content as needed
+git add .
+git commit -m "Added initial scripts from Pwnbox"
+git push
+
+
+# Tool to see your active repo
+git remote -v
+
+

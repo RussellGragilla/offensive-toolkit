@@ -1,0 +1,17 @@
+
+# Generate an SSH key
+ssh-keygen -t ed25519 -C "russellgragilla@gmail.com"
+
+# Start agent and add key
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+# Shows public key - copy this output to GitHub under SSH keys
+cat ~/.ssh/id_ed25519.pub
+
+# Changing Git remote to SSH
+git remote set-url origin git@github.com:RussellGragilla/offensive-toolkit.git
+
+# Test key and push
+ssh -T git@github.com
+git push -u origin main

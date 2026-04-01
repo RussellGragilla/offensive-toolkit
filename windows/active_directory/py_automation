@@ -1,0 +1,11 @@
+from impacket.smbconnection import SMBConnection
+ 
+target = "10.129.234.72"
+ 
+# Null session
+conn = SMBConnection(target, target)
+conn.login("", "")
+ 
+shares = conn.listShares()
+for share in shares:
+    print(f"Share: {share['shi1_netname']}")

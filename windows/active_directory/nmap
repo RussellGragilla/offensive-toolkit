@@ -1,0 +1,5 @@
+# Scan SMB shares
+nmap --script smb-enum-shares -p445 10.10.10.5
+ 
+# Scan users
+nmap --script smb-enum-users -p445 10.10.10.5

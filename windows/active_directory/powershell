@@ -1,0 +1,2 @@
+# List shares on a remote machine
+Get-SmbShare -CimSession 10.10.10.5
