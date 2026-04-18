@@ -1,0 +1,67 @@
+
+- -sS: Does not complete the connection so it leaves no trace, 
+   very good if it can be used.(privileges) It is the 
+   one used by default.
+
+- -sT: Completes the connection, so it does leave a trace, 
+   but it can be used for sure. By default without privileges.
+
+- -sU: Slower, for UDP. Mostly: DNS(53), SNMP(161,162), 
+   DHCP(67 and 68), (-sU53,161,162,67,68): open(reply), 
+   closed(port unreachable), filtered (another ICMP), 
+   open/filtered (nothing). In case of open/filtered, -sV sends 
+   numerous requests to detect any of the versions that nmap 
+   supports and can detect the true state. It increases a lot the time.
+
+- -sY: SCTP protocol fails to establish the connection, 
+   so there are no logs, works like -PY
+
+- -sN,-sX,-sF: Null, Fin, Xmas, they can penetrate some firewalls 
+   and extract information. They are based on the fact that 
+   standard compliant machines should respond with RST all 
+   requests that do not have SYN, RST or ACK lags raised: 
+   open/filtered(nothing), closed(RST), filtered (ICMP unreachable). 
+   Unreliable on WIndows, CIsco, BSDI and OS/400. On unix yes.
+
+- -sM: Maimon scan: Sends FIN and ACK flags, used for BSD, 
+   currently will return all as closed.
+
+- -sA, sW: ACK and Window, is used to detect firewalls, 
+   to know if the ports are filtered or not. The -sW does 
+   distinguish between open/closed since the open ones respond 
+   with a different window value: open (RST with window other than 0), 
+   closed (RST window = 0), filtered (ICMP unreachable or nothing). 
+   Not all computers work this way, so if it is all closed, it is not 
+   working, if it is a few open, it is working fine, and if it is 
+   many open and few closed, it is working the other way around.
+
+- -sI: Idle scan. For the cases in which there is an active firewall 
+   but we know that it does not filter to a certain Ip (or when we 
+   simply want anonymity) we can use the zombie scanner (it works for 
+   all the ports), to look for possible zombies we can use the script 
+   ipidseq or the exploit auxiliary/scanner/ip/ipidseq. 
+   This scanner is based on the IPID number of the IP packets.
+
+- --badsum: It sends the sum wrong, the computers would discard 
+    the packets, but the firewalls could answer something, 
+    it is used to detect firewalls.
+
+- -sZ: "Weird" SCTP scanner, when sending probes with cookie echo 
+   fragments they should be dropped if open or responded with 
+   ABORT if closed. It can pass through firewalls that init 
+   does not pass through, the bad thing is that it does not 
+   distinguish between filtered and open.
+
+- -sO: Protocol Ip scan. Sends bad and empty headers in which 
+   sometimes not even the protocol can be distinguished. 
+   If ICMP unreachable protocol arrives it is closed, 
+   if unreachable port arrives it is open, if another error arrives, 
+   filtered, if nothing arrives, open|filtered.
+
+- -b <server>: FTPhost--> It is used to scan a host from another one, 
+   this is done by connecting the ftp of another machine and 
+   asking it to send files to the ports that you want to scan 
+   from another machine, according to the answers we will know 
+   if they are open or not. [<user>:<password>@]<server>[:<port>] 
+   Almost all ftps servers no longer let you do this and therefore it 
+   is of little practical use.

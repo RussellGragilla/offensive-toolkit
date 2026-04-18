@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+mkdir -p pentesting
+
+awk '
+/^#### /{
+    if(out) close(out);
+    name=$0;
+    gsub(/^#### /,"",name);
+    gsub(/ /,"_",name);
+    gsub(/[[:punct:]]/,"",name);
+    gsub(/[0-9]/,"",name);
+    out="pentesting/" name ".md"
+}
+/^### /{
+    if(out) close(out);
+    name=$0;
+    gsub(/^### /,"",name);
+    gsub(/ /,"_",name);
+    gsub(/[[:punct:]]/,"",name);
+    gsub(/[0-9]/,"",name);
+    out="pentesting/" name ".md"
+}
+/^## /{
+    if(out) close(out);
+    name=$0;
+    gsub(/^## /,"",name);
+    gsub(/ /,"_",name);
+    gsub(/[[:punct:]]/,"",name);
+    gsub(/[0-9]/,"",name);
+    out="pentesting/" name ".md"
+}
+out{print > out}
+' README.md

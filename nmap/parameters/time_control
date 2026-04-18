@@ -1,0 +1,52 @@
+
+Nmap can modify time in seconds, minutes, ms: --host-timeout 
+arguments 900000ms, 900, 900s, and 15m all do the same thing.
+
+Nmap divides the total number of hosts to scan into groups 
+and analyzes these groups in blocks, so it doesn't move to 
+the next block until all have been analyzed (and the user doesn't 
+receive any updates until the block has been analyzed). This way, 
+it's more optimal for Nmap to use large groups. By default in class C, 
+it uses 256.
+
+This can be changed with --min-hostgroup ; --max-hostgroup (Adjust 
+parallel scan group sizes)
+
+You can control the number of parallel scanners but it's 
+better not to (Nmap already incorporates automatic control based 
+on network status): --min-parallelism ; --max-parallelism
+
+We can modify the RTT timeout, but it's usually not 
+necessary: --min-rtt-timeout , --max-rtt-timeout , --initial-rtt-timeout
+
+We can modify the number of attempts: --max-retries
+
+We can modify the scanning time of a host: --host-timeout
+
+We can modify the time between each test to slow 
+it down: --scan-delay ; --max-scan-delay
+
+We can modify the number of packets per second: --min-rate ; --max-rate
+
+Many ports take a long time to respond when filtered or closed. 
+If we're only interested in open ones, we can go 
+faster with: --defeat-rst-ratelimit
+
+To define how aggressive we want Nmap 
+to be: -T paranoid|sneaky|polite|normal|aggressive|insane
+
+-T (0-1)
+
+-T0 --> Only scans 1 port at a time and waits 5min until the next
+
+-T1 and T2 --> Very similar but only wait 15 and 0.4sec 
+respectively between each test
+
+-T3 --> Default operation, includes parallel scanning
+
+-T4 --> --max-rtt-timeout 1250ms --min-rtt-timeout 
+ 100ms --initial-rtt-timeout 500ms --max-retries 6 --max-scan-delay 10ms
+
+-T5 --> --max-rtt-timeout 300ms --min-rtt-timeout 
+ 50ms --initial-rtt-timeout 250ms --max-retries 2 --host-timeout 
+ 15m --max-scan-delay 5ms

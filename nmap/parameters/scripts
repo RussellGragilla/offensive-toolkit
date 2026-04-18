@@ -1,0 +1,45 @@
+To use default scripts, use -sC or --script=default
+
+Available types are: auth, broadcast, default, discovery, dos, 
+exploit, external, fuzzer, intrusive, malware, safe, version, and vuln
+
+- Auth: executes all available authentication scripts
+- Default: executes basic default tool scripts
+- Discovery: retrieves information from the target or victim
+- External: script for using external resources
+- Intrusive: uses scripts considered intrusive to the victim or target
+- Malware: checks for connections opened by malicious code or backdoors
+- Safe: executes non-intrusive scripts
+- Vuln: discovers the most known vulnerabilities
+- All: executes absolutely all available NSE extension scripts
+
+
+
+To search for scripts:
+
+nmap --script-help="http-*" -> Those starting with http-
+
+nmap --script-help="not intrusive" -> All except those
+
+nmap --script-help="default or safe" -> Those in either or both
+
+nmap --script-help="default and safe" --> Those in both
+
+nmap --script-help="(default or safe or intrusive) and not http-*"
+
+
+
+--script-args =,={=},={,}
+
+--script-args-file
+
+--script-help ||||all[,...]
+
+--script-trace ---> Provides info on how the script is progressing
+
+--script-updatedb
+
+To use a script, just type: nmap --script Script_Name target --> When 
+using the script, both the script and scanner will execute, so 
+scanner options can also be added. We can add "safe=1" to execute 
+only safe ones.

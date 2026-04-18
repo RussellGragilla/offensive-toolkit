@@ -1,0 +1,58 @@
+By default Nmap launches a discovery phase consisting 
+of: -PA80 -PS443 -PE -PP
+
+- -sL: It is not invasive, it lists the targets making DNS requests to 
+   resolve names. It is useful to know if for example www.prueba.es/24 
+   all Ips are our targets.
+
+- -Pn: No ping. This is useful if you know that all of them are active 
+   (if not, you could lose a lot of time, but this option also produces 
+   false negatives saying that they are not active), it prevents 
+   the discovery phase.
+
+- -sn : No port scan. After completing the reconnaissance phase, it 
+   does not scan ports. It is relatively stealthy, and allows a 
+   small network scan. With privileges it sends an ACK (-PA) to 80, 
+   a SYN(-PS) to 443 and an echo request and a Timestamp request, 
+   without privileges it always completes connections. If the target 
+   is the network, it only uses ARP(-PR). If used with another option, 
+   only the packets of the other option are dropped.
+
+- -PR: Ping ARP. It is used by default when analyzing computers in 
+   our network, it is faster than using pings. If you do not want 
+   to use ARP packets use --send-ip.
+
+- -PS <ports>: It sends SYN packets to which if it answers SYN/ACK it is 
+   open (to which it answers with RST so as not to end the connection), 
+   if it answers RST it is closed and if it does not answer 
+   it is unreachable. In case of not having privileges, a total 
+   connection is automatically used. If no ports are given, 
+   it throws it to 80.
+
+- -PA <ports>: Like the previous one but with ACK, combining both of 
+   them gives better results.
+
+- -PU <ports>: The objective is the opposite, they are sent to ports 
+   that are expected to be closed. Some firewalls only check TCP 
+   connections. If it is closed it is answered with port unreachable, 
+   if it is answered with another icmp or not answered it is left 
+   as destination unreachable.
+
+- -PE, -PP, -PM : ICMP PINGS: echo replay, timestamp and addressmask. 
+   They are launched to find out if the target is active.
+
+- -PY<ports>: Sends SCTP INIT probes to 80 by default, INIT-ACK(open) 
+   or ABORT(closed) or nothing or ICMP unreachable(inactive) 
+   can be replied.
+
+- -PO <protocols>: A protocol is indicated in the headers, 
+   by default 1(ICMP), 2(IGMP) and 4(Encap IP). For ICMP, IGMP, 
+   TCP (6) and UDP (17) protocols the protocol headers are sent, 
+   for the rest only the IP header is sent. The purpose of this 
+   is that due to the malformation of the headers, Protocol 
+   unreachable or responses of the same protocol are answered to 
+   know if it is up.
+
+- -n: No DNS
+
+- -R: DNS always

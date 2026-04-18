@@ -1,0 +1,7 @@
+
+- <ip>,<net/mask>: Indicate the ips directly
+
+- iL <ips_file>: list_IPs
+
+- iR <number>: Number of random Ips, you can exclude 
+  possible Ips with --exclude <Ips> or --excludefile <file>.

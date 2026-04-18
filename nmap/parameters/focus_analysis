@@ -1,0 +1,28 @@
+
+- -p: Used to specify ports to scan. 
+   To select all 65,335 ports: -p- or -p all. Nmap has an internal 
+   classification based on popularity. By default, it uses the 
+   top 1000 ports. With -F (fast scan) it analyzes the top 100. 
+   With --top-ports it analyzes that number of top 
+   ports (from 1 to 65,335). It checks ports in random order; 
+   to prevent this, use -r. We can also select specific ports: 
+   20-30,80,443,1024- (the latter means to look from 1024 onwards). 
+   We can also group ports by protocols: U:53,T:21-25,80,139,S:9. 
+   We can also choose a range within Nmap's popular ports: -p [-1024] 
+   analyzes up to port 1024 from those included in 
+   nmap-services. --port-ratio Analyzes the most common ports 
+   within a ratio between 0 and 1
+
+- -sV Version scanning, intensity can be regulated from 0 to 9, default is 7.
+
+- --version-intensity We regulate the intensity, so that the lower it is, 
+   it will only launch the most probable probes, but not all. With this, 
+   we can considerably shorten UDP scanning time
+
+- -O OS detection
+
+- --osscan-limit For proper host scanning, at least one open port 
+   and one closed port are needed. If this condition isn't met 
+   and we've set this, it won't attempt OS prediction (saves time)
+
+- --osscan-guess When OS detection isn't perfect, this makes it try harder
